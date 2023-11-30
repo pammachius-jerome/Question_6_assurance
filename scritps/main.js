@@ -1,6 +1,6 @@
 // déclarations des variables globale
 let message = document.getElementById("reponse");
-let tarif;
+let tarif = 0;
 
 function resultat() {
     let age = document.getElementById("age").value;
@@ -10,34 +10,38 @@ function resultat() {
     // évaluation du type d'assurance avant ancienneté
     if (age >= 25) {
         if (anneePermis >= 2) {
-            if (nbrAccident === 0) {
+            if (nbrAccident == 0) {
                 tarif = 3;
-            } else if (nbrAccident === 1) {
+            } else if (nbrAccident == 1) {
                 tarif = 2;
-            } else if (nbrAccident === 2) {
+            } else if (nbrAccident == 2) {
                 tarif = 1;
             } else {
                 tarif = 0;
             }
-        } else if (nbrAccident === 0) {
+        } else if (nbrAccident == 0) {
             tarif = 2;
-        } else {
-            tarif = 0;
-        }
-    } else if (anneePermis < 2) {
-        if (nbrAccident === 0) {
+        } else if (nbrAccident == 1) {
             tarif = 1;
         } else {
             tarif = 0;
         }
-    } else if (nbrAccident === 0) {
+    } else if (anneePermis < 2) {
+        if (nbrAccident == 0) {
+            tarif = 1;
+        } else {
+            tarif = 0;
+        }
+    } else if (nbrAccident == 0) {
         tarif = 2;
+    } else if (nbrAccident == 1) {
+        tarif = 1
     } else {
         tarif = 0;
     }
     // réévaluation avec ancienneté
     if (tarif > 0) {
-        if (anneeFidelite > 5) {
+        if (anneeFidelite > 1) {
             tarif++;
         }
     }
